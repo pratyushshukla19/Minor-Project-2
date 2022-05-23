@@ -1,0 +1,97 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<title data-i18n="title"></title>
+		<meta charset="utf-8">
+		<link rel="stylesheet" type="text/css" href="{{url_for('static', filename='bootstrap.min.css')}}">		
+		<link rel="stylesheet" type="text/css" href="{{url_for('static', filename='style.css')}}">
+		<script type="text/javascript" src="{{url_for('static', filename='jquery.js')}}"></script>
+		<script type="text/javascript" src="{{url_for('static', filename='jquery.jslatex.js')}}"></script>
+		<script type="text/javascript" src="{{url_for('static', filename='main.js')}}"></script>
+		<script>
+		$(function () {
+		    $(".latex").latex();
+		});
+		</script>
+		
+	</head>
+	<body>
+		<div class="navbar navbar-default navbar-fixed-top" role="navigation">
+		    <div class="container">
+		        <div class="navbar-header">
+		            <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#navbar-content-collapse">
+		                <span class="sr-only">Toggle navigation</span>
+		                <span class="icon-bar"></span>
+		                <span class="icon-bar"></span>
+		                <span class="icon-bar"></span>
+		            </button>
+		            <a class="navbar-brand" href="#">
+		            </a>
+		        </div>
+		        <div class="collapse navbar-collapse" id="navbar-content-collapse">
+		            <ul class="nav navbar-nav navbar-right">
+		                <li><a href="/">Home</a></li>
+		                <li><a href="{{url_for('static', filename='demo.html')}}">Examples</a></li>
+						<li><a target="_blank" rel="noopener noreferrer" href="https://purl.org/mathqa">Video</a></li>
+		                <li><a target="_blank" rel="noopener noreferrer" href="https://github.com/ag-gipp/MathQA">Github</a></li>
+		            </ul>
+		        </div>
+		    </div>
+		</div>
+
+		<div id="main">
+			<h1 class="titleText" style="font-weight:600;">Mathematical Question Answering System (MathQA)</h1>
+			<div class="form-group col-sm-2 col-sm-offset-10">
+			
+
+			    <label for="exampleInputEmail1"><span class="langText">Language</span></label>
+			    <select class="form-control" id="langSelect" onchange="return languagechange();">
+			    	<option value="en">English</option>
+			    	<option value="hn">Hindi</option>
+			    </select>
+			</div>
+			
+			<div class="col-sm-12 col-xs-12">
+				<div class="col-sm-10 col-sm-offset-1 col-xs-12">
+					<!-- <form class="form" id="firstForm" onsubmit="return getResult();"> -->
+						<div class="input-group" style="margin-top:20px;">
+						
+							 <input class="form-control" id="formula" aria-describedby="basic-addon2">
+							 <div class="input-group-btn"> 
+							 	<button type="submit" class="btn btn-primary" onclick="return getResult();"><span id="Loader1" class="glyphicon glyphicon-refresh glyphicon-refresh-animate" style="font-size:19px;"></span><span class="searchBtnText">Search</span></button> 
+							 </div>
+						
+						</div>
+					<!-- </form> -->
+					
+					<div class="panel panel-default userinputPanel" style="margin-top:30px;display:none;">
+					  <div class="panel-body">
+					  	<form class="form userInputForm">
+					  		<p class="formulaText" style="font-size:30px; font-weight:600;margin-left: 15px;width: 50px; height: 25px; margin-bottom: 25px;"><span class="formula latex"></span></p>
+							<div class="userInputDiv" style="..."></div>
+							<div class="InputErrorDiv"></div>
+							<button type="button" class="btn btn-primary submitBtn" style="float:right;" onclick="return getResultFromInputs();"><span id="Loader2" class="glyphicon glyphicon-refresh glyphicon-refresh-animate" style="font-size:19px;"></span><span class="submitBtnText">Submit</span></button>
+
+							<p class="sourceDiv", style="..."></p>
+
+						</form>
+					  </div>
+					</div>
+
+					
+					<div class="panel panel-default resultPanel" style="margin-top:30px;display:none;">
+					  <div class="panel-body">
+					     <h4 class="formheadlabel">Solution</h4>
+					     
+					     <p class="resultValue" style="font-size: 30px;font-weight: 600;">
+					     	
+					     </p>
+					     
+					  </div>
+					</div>	
+				</div>
+			</div>
+			
+		</div>
+	</body>
+</html>
